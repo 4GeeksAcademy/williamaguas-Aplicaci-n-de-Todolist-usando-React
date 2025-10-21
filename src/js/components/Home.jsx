@@ -17,16 +17,22 @@ const Home = () => {
 			setTarea("")
 		}
 	}
-const eliminarTarea = (posicion) =>{
-	setLista(lista.filter((item, index)=>index!==posicion))
-}
+	const eliminarTarea = (posicion) => {
+		setLista(lista.filter((item, index) => index !== posicion))
+	}
 	return (
-		<div className="text-center">
-			<input type="text" placeholder="agrega una tarea" onChange={escribirTarea} value={tarea} onKeyDown={agregar} />
-			<ul className="list-unstyled">
-				{lista.map((item, index) => (<li key={index}>{item}<span onClick={()=>eliminarTarea(index)}> ❌ </span></li>))}
-			</ul>
-		</div >
+		<div className="contenedor d-flex justify-content-center align-items-center">
+			<h1>Todolist </h1>
+			<div className="paper border text-center">
+				<input type="text" placeholder="agrega una tarea" onChange={escribirTarea} value={tarea} onKeyDown={agregar} />
+				<ul className="list-unstyled">
+					{lista.map((item, index) => (
+						<li key={index}>{item}<span className="borrador" onClick={() => eliminarTarea(index)}> ❌ </span> <hr /> </li>
+					))}
+				</ul>
+				<p className="d-flex justify-content-start">{lista.length} item left</p>
+			</div >
+		</div>
 	)
 
 }
